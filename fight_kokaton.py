@@ -129,7 +129,8 @@ class Beam:
         """
         割愛
         """
-        self._img = pg.transform.rotozoom(pg.image.load(f"ex03/fig/beam.png"), 0, 2.0)  # 画像surface
+        rad = random.randint(0, 5)
+        self._img = pg.transform.rotozoom(pg.image.load(f"ex03/fig/beam.png"), 0, rad)  # 画像surface
         self._rct = self._img.get_rect()  # 画像surfaceに対応したrect
         self._rct.left = bird._rct.right  # こうかとんの右側にビームの左側を合わせる
         self._rct.centery = bird._rct.centery
