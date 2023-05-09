@@ -8,6 +8,7 @@ import pygame as pg
 WIDTH = 1600  # ゲームウィンドウの幅
 HEIGHT = 900  # ゲームウィンドウの高さ
 NUM_OF_BOMBS = 5  # 爆弾の数
+NUM_OF_BEAMS = 8  # ビームの数
 
 
 def check_bound(area: pg.Rect, obj: pg.Rect) -> tuple[bool, bool]:
@@ -129,11 +130,13 @@ class Beam:
         """
         割愛
         """
+        radx = random.randint(-1, 1)
+        rady = random.randint(-1, 1)
         self._img = pg.transform.rotozoom(pg.image.load(f"ex03/fig/beam.png"), 0, 2.0)  # 画像surface
         self._rct = self._img.get_rect()  # 画像surfaceに対応したrect
         self._rct.left = bird._rct.right  # こうかとんの右側にビームの左側を合わせる
         self._rct.centery = bird._rct.centery
-        self._vx, self._vy = +1, 0
+        self._vx, self._vy = radx, rady
 
     def update(self, screen: pg.Surface):
         """
